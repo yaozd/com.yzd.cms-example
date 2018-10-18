@@ -1,6 +1,7 @@
 package com.zhiliao.component.beetl.html;
 
 
+import com.zhiliao.common.utils.FastJsonUtil;
 import com.zhiliao.component.beetl.thread.HtmlThread;
 import com.zhiliao.common.utils.PathUtil;
 import com.zhiliao.common.utils.StrUtil;
@@ -50,7 +51,7 @@ public class BeetlHtmlUtil {
 		template.renderTo(writer);
 		HtmlObject obj = new HtmlObject();
 		obj.setContent(format(writer.toString()));
-		String fileUrl = PathUtil.getWebRootPath() +File.separator+ "html" + File.separator+ siteId + File.separator + (StrUtil.isBlank(action)?"index":action) + ".html";
+		String fileUrl = PathUtil.getWebRootPath() +File.separator+ "cmsstaticfile"+File.separator+ "html" + File.separator+ siteId + File.separator + (StrUtil.isBlank(action)?"index":action) + ".html";
 		new File(fileUrl).delete();
 		obj.setFileUrl(fileUrl);
 		HtmlThread.addHtml(obj);
@@ -60,4 +61,20 @@ public class BeetlHtmlUtil {
 		return page.replace("/"+sitePrefix+"/","/html/").replace(siteSubfix, STATIC_SUFFIX);
 	}
 
+	/***
+	 * 生成json格式的静态文件
+	 * @param siteId
+	 * @param action
+	 * @param content
+	 */
+	public void createJsonData(Integer siteId, String action, Map<String, Object> content) {
+
+		String jsonData= FastJsonUtil.serialize(content);
+		HtmlObject obj = new HtmlObject();
+		obj.setContent(jsonData);
+		String fileUrl = PathUtil.getWebRootPath() +File.separator+ "cmsstaticfile"+File.separator+ "data" + File.separator+ siteId + File.separator + (StrUtil.isBlank(action)?"index":action) + ".json";
+		new File(fileUrl).delete();
+		obj.setFileUrl(fileUrl);
+		HtmlThread.addHtml(obj);
+	}
 }

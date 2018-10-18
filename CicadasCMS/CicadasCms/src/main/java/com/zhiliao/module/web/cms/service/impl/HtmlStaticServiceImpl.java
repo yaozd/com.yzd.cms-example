@@ -124,6 +124,18 @@ public class HtmlStaticServiceImpl implements HtmlStaticService{
             beetlHtmlUtil.create(request,siteId,"topic"+File.separator+topic.getTopicId(),attr,(StrUtil.isBlank(site.getTemplate()) ? "default" : site.getTemplate()), !StrUtil.isBlank(topic.getTopicTpl()) ? topic.getTopicTpl() : CmsConst.TOPIC_TPL);
         }
     }
-
+    /***
+     * 生成json数据内容页
+     * @param siteId
+     * @param categoryId
+     * @param contentId
+     */
+    @Override
+    public void jsonData(Integer siteId, Long categoryId, Long contentId) {
+        TCmsCategory category = categoryService.findById(categoryId);
+        TCmsModel contentModel = modelService.findById(category.getModelId());
+        Map content = contentService.findContentByContentIdAndTableName(contentId,contentModel.getTableName());
+        beetlHtmlUtil.createJsonData(siteId,categoryId.toString()+File.separator+contentId.toString(),content);
+    }
 
 }

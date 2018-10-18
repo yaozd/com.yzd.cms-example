@@ -109,6 +109,8 @@ public class HtmlStaticController {
         List<TCmsContent> contentList = contentService.findByCategoryId(categoryId);
         for(TCmsContent content:contentList){
             htmlStaticService.content(siteId,categoryId,content.getContentId());
+            //生成json数据内容页
+            htmlStaticService.jsonData(siteId,categoryId,content.getContentId());
         }
 
     }

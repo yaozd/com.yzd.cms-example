@@ -10,4 +10,5 @@ public interface HtmlStaticService {
 
     void topic(Integer siteId);
 
+    void jsonData(Integer siteId, Long categoryId, Long contentId);
 }
