@@ -19,6 +19,16 @@ server.port=2225
 cms.static.path=/data/html/
 
 ```
+### 设置后台启动
+
+```
+1.启动
+nohup java -jar com.yzd.httpServer-1.0.jar>/dev/null 2>&1 &
+2.检测
+ps -au |grep java |grep -v 'grep'
+netstat -ntpl
+
+```
 
 ### [spring boot 使用application.properties 进行外部配置](https://blog.csdn.net/yingxiake/article/details/51260302?utm_source=blogxgwz5)
 
