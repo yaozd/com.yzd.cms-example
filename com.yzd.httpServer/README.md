@@ -11,12 +11,17 @@ windows环境下
 #
 server.port=2222
 cms.static.path=C:\\Users\\proc\\Documents\\com.yzd.cms-example\\CicadasCMS\\CicadasCms\\cmsstaticfile\\
-
+# 切换不同环境的配置信息
+# pro环境不在控制台输出
+spring.profiles.active=pro
 ----
 linux环境下
 #
 server.port=2225
 cms.static.path=/data/html/
+# 切换不同环境的配置信息
+# pro环境不在控制台输出
+spring.profiles.active=pro
 
 ```
 ### 设置后台启动
