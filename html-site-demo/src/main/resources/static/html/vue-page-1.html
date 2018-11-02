@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE-分页</title>
+    <script src="/content/js/lib/jquery.js"></script>
+    <script src=/content/js/lib/vue.js></script>
+    <script src="/content/js/lib/axios.min.js"></script>
+    <script src="/content/js/plugins/laypage/laypage.js"></script>
+    <link rel="stylesheet" href="/content/js/plugins/laypage/skin/laypage.css">
+</head>
+<body>
+<h1>VUE-分页</h1>
+<h2>CTRL+F5清除缓存（避免数据请求缓存）</h2>
+<h3>推荐从服务器端解决-请求跨域</h3>
+<div id="contentTpl">
+    <ul>
+        <li v-for="item in reports">{{item.name}}</li>
+    </ul>
+</div>
+<div class="page" id="demo7"></div>
+</body>
+<script>
+    var model = {
+        reports:[]
+    };
+    var vm = new Vue({
+        el: "#contentTpl",
+        data: model,
+        created:function(){
+            getData();
+        }
+    });
+    function getData() {
+        axios.get('/content/data/reportsList.json')
+            .then(function (response) {
+                //alert(response.data);
+                //model.reports=response.data;
+                vm.reports=response.data;
+            });
+    }
+</script>
+<script>
+    $(function (){
+        //完整功能
+        //调用分页
+        laypage({
+            skip: true, //是否开启跳页
+            skin: '#e88a6e',
+            cont: $('#demo7'), //容器。值支持id名、原生dom对象，jquery对象,
+            pages: 100, //总页数
+            curr:1,
+            groups: 7, //连续显示分页数
+            jump: function (obj, first) { //触发分页后的回调,是否是首次创建分布
+                console.log(first);
+                if(first){return;}
+                if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+                    console.log(obj.curr);
+                }
+            }
+        });
+    });
+
+</script>
+</html>

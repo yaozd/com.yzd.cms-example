@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE在服务器端不支持跨域请求的情况下的解决方案</title>
+    <script src="/content/js/lib/jquery.js"></script>
+    <script src="/content/js/lib/jquery.jsonp.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //把script添加到head下
+            //Math.random 防止浏览器缓存
+            $("head").append("<script src=http://localhost:2222/html/data/1/181/111.json?"+Math.random()+"><\/script>");
+            $.getJSON('http://api.jebao.net/api/product/list', function(response){
+                alert(response.data);
+            });
+        });
+    </script>
+    <script src=/content/js/lib/vue.js></script>
+
+</head>
+<body>
+<div id="xxx">
+    <h1>VUE在服务器端不支持跨域请求的情况下的解决方案</h1>
+    <h3>主要是利用VUE的双向绑定的特性</h3>
+    <h3>不推荐使用jsonp方式解决跨域问题</h3>
+    <p>http://localhost:2222/html/data/1/181/111.json的数据内容：</p>
+    <textarea  rows="15"  style="height:100%;width: 1000px" >
+        model.reports=[
+        {"name":"2018年9月","address":"http://xxxxx/html01809/index.html"},
+        {"name":"2018年8月","address":"http://xxxxx/html2018.08yunyingbaogao.pdf"},
+        {"name":"2018年7月","address":"http://xxxxx/html/ing/2018.07yunyingbaogao.pdf"},
+        {"name":"2018年6月","address":"http://xxxxx/html/ng/2018.06yunyingbaogao.pdf"},
+        {"name":"2018年5月","address":"http://xxxxx/htmlyun/2018.yunyingbaogao.pdf"},
+        {"name":"2018年4月","address":"http://xxxxx/html/yunyin.04yunyingbaogao.pdf"},
+        {"name":"2018年3月","address":"http://xxxxx/html/yunying3yunyingbaogao.pdf"},
+        {"name":"2018年2月","address":"http://xxxxx/html/yunying18.02yunyingbaogao.pdf"},
+        {"name":"2018年1月","address":"http://xxxxx/html/yunying/.01yunyingbaogao.pdf"}
+        ];
+    </textarea>
+</div>
+<div id="contentTpl">
+    <ul>
+        <li v-for="item in reports">{{item.name}}</li>
+    </ul>
+</div>
+<script>
+    var model = {
+        reports:[]
+    };
+    var vm = new Vue({
+        el: "#contentTpl",
+        data: model,
+        created:function(){
+        }
+    });
+</script>
+</body>
+
+</html>

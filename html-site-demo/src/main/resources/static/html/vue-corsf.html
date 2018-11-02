@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE-请求跨域验证</title>
+    <script src="/content/js/lib/jquery.js"></script>
+    <script src=/content/js/lib/vue.js></script>
+    <script src="/content/js/lib/axios.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            axios.get('http://localhost:2222/html/data/1/181/183.json')
+                .then(function (response) {
+                    alert(response.data);
+                });
+        });
+    </script>
+</head>
+<body>
+<h1>VUE-请求跨域验证</h1>
+<h2>CTRL+F5清除缓存（避免数据请求缓存）</h2>
+<h3>推荐从服务器端解决-请求跨域</h3>
+</body>
+</html>

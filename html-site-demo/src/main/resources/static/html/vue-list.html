@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE-列表</title>
+    <script src="/content/js/lib/jquery.js"></script>
+    <script src=/content/js/lib/vue.js></script>
+    <script src="/content/js/lib/axios.min.js"></script>
+</head>
+<body>
+<h1>VUE-列表</h1>
+<h2>CTRL+F5清除缓存（避免数据请求缓存）</h2>
+<h3>推荐从服务器端解决-请求跨域</h3>
+<div id="contentTpl">
+    <ul>
+        <li v-for="item in reports">{{item.name}}</li>
+    </ul>
+</div>
+</body>
+<script>
+    var model = {
+        reports:[]
+    };
+    var vm = new Vue({
+        el: "#contentTpl",
+        data: model,
+        created:function(){
+            getData();
+        },
+        methods:{
+            ttt:function (val) {
+                console.log(val);
+                return "aaaa";
+            }
+        }
+    });
+    function getData() {
+        axios.get('/content/data/reportsList.json')
+            .then(function (response) {
+                //alert(response.data);
+                //model.reports=response.data;
+                vm.reports=response.data;
+            });
+    }
+</script>
+</html>
