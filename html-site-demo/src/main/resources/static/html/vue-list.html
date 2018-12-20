@@ -15,6 +15,10 @@
     <ul>
         <li v-for="item in reports">{{item.name}}</li>
     </ul>
+    <h6>VUE循环平行引用：:id="item.name"</h6>
+    <ul>
+        <li :id="item.name" v-for="item in reports">{{item.name}}</li>
+    </ul>
 </div>
 </body>
 <script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>获得请求参数-避免部分XSS漏洞</title>
+    <script src="/content/js/lib/jquery.js"></script>
+    <script src=/content/js/lib/common.js></script>
+    <script src=/content/js/lib/vue.js></script>
+</head>
+<body>
+<h1>获得请求参数-避免部分XSS漏洞</h1>
+<h6>http://localhost:1222/html/request-param.html?_ijt=r3j1u3bpoppptkrqmsn909rj3s</h6>
+<h6>http://localhost:1222/html/request-param.html?_ijt=%22%3E%3Cscript%3Ealert(%27XSS%27);%3C/script%3E</h6>
+<textarea  rows="15" style="height:100%;width: 1000px" id="text">
+ /**
+ * Jquery中避免部分XSS漏洞
+ * 解决办法：将请求参数的字符串中的特殊符号进行转义
+ * @param obj
+ * @returns {string}
+ */
+function xssEscapeHtml(obj) {
+    return(obj)?obj.replace(/</g, '&lt;').replace(/>/g, '&gt;'):"";
+}
+</textarea>
+</body>
+<script>
+    $(function () {
+        var param=common.getUrlParam("_ijt");
+        alert(param);
+    })
+</script>
+</html>
