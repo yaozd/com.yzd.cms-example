@@ -750,7 +750,7 @@ CREATE TABLE `t_sys_schedule_job` (
 # Data for table "t_sys_schedule_job"
 #
 
-INSERT INTO `t_sys_schedule_job` VALUES (6,'0/10 * * * * ?','job1','1','测试',NULL,'com.zhiliao.module.web.system.task.taskTest','2017-07-10 15:03:11','1','g1',NULL,NULL,NULL,'t1'),(7,'0/10 * * * * ?','job2','1','测试二',NULL,'com.zhiliao.module.web.system.task.taskTest','2017-07-10 15:40:47','0','g2',NULL,NULL,NULL,'t2'),(8,'0/10 * * * * ?','job3','1','测试3',NULL,'com.zhiliao.module.web.system.task.taskTest','2017-07-10 16:25:42','0','g1',NULL,NULL,NULL,'t3');
+INSERT INTO `t_sys_schedule_job` VALUES (6,'0/10 * * * * ?','job1','1','测试',NULL,'com.zhiliao.module.web.system.task.taskTest','2017-07-10 15:03:11','0','g1',NULL,NULL,NULL,'t1'),(7,'0/10 * * * * ?','job2','1','测试二',NULL,'com.zhiliao.module.web.system.task.taskTest','2017-07-10 15:40:47','0','g2',NULL,NULL,NULL,'t2'),(8,'0/10 * * * * ?','job3','1','测试3',NULL,'com.zhiliao.module.web.system.task.taskTest','2017-07-10 16:25:42','0','g1',NULL,NULL,NULL,'t3');
 
 #
 # Structure for table "t_sys_user"
