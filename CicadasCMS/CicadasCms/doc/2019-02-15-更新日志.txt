@@ -1,0 +1,7 @@
+#站点新增sitekey字段
+#修改站点访问路径 如： 原来http://ip/{frontPath}/{site}，现新增http://ip/{siteKey}方式
+#优化静态页面生成方法，配置文件中新增生成静态html的存放路径
+#后台增加删除静态html的功能
+#优化cms标签
+#cms_content_page 内容分页标签增加categoryId 和 pageNumber 参数
+#新增beetl内置的ajax功能

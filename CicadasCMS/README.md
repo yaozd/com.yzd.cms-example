@@ -1,3 +1,8 @@
+
+### CicadasCMS地址
+- [https://gitee.com/westboy/CicadasCMS](https://gitee.com/westboy/CicadasCMS)
+- [CicadasCMS](https://gitee.com/westboy/CicadasCMS)-推荐参考-byArvin
+
 springboot+mybatis+beetl开发的一款CMS，支持自定义内容模型、模板标签、全站静态化等功能（功能不断完善中.....）
 QQ交流群:1482196
 # Quick Start
