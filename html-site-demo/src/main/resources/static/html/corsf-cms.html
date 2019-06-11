@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax-请求跨域验证-cms</title>
+    <script src="/content/js/lib/jquery.js"></script>
+    <script src="/content/js/lib/axios.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.getJSON('http://localhost:2380/api/content/1', function(response){
+                console.log(response);
+                alert(response.msg);
+            });
+            axios.get('http://localhost:2380/api/content/1')
+                .then(function (response) {
+                    console.log(response);
+                    console.log(response.data);
+                    alert(response.data);
+                });
+        });
+    </script>
+</head>
+<body>
+<h1>调用CMS接口</h1>
+<h2>ajax-请求跨域验证</h2>
+<h2>CTRL+F5清除缓存（避免数据请求缓存）</h2>
+<h3>推荐从服务器端解决-请求跨域</h3>
+</body>
+</html>

@@ -17,6 +17,9 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new CorsInterceptor())
+                .addPathPatterns("/api/category/**")
+                .addPathPatterns("/api/content/**");
     }
 
     @Override
