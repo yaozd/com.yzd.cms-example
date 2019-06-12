@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhiliao.mybatis.mapper.TExtAdvertiseMapper">
+    <resultMap id="BaseResultMap" type="com.zhiliao.mybatis.model.TExtAdvertise">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="weixin" jdbcType="VARCHAR" property="weixin"/>
+        <result column="picture" jdbcType="VARCHAR" property="picture"/>
+        <result column="gmt_is_del" jdbcType="INTEGER" property="gmtIsDel"/>
+        <result column="gmt_create_time" jdbcType="TIMESTAMP" property="gmtCreateTime"/>
+    </resultMap>
+
+    <!--自定义脚本////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <sql id="all_column">
+        id,
+        name,
+        sex,
+        mobile,
+        weixin,
+        picture,
+        gmt_is_del,
+        gmt_create_time
+    </sql>
+
+    <sql id="Query_Where_Clause">
+        <if test="pojo != null">
+            <if test="pojo.id != null">AND id = #{pojo.id}</if>
+            <if test="pojo.name != null">AND name = #{pojo.name}</if>
+            <if test="pojo.sex != null">AND sex = #{pojo.sex}</if>
+            <if test="pojo.mobile != null">AND mobile = #{pojo.mobile}</if>
+            <if test="pojo.weixin != null">AND weixin = #{pojo.weixin}</if>
+            <if test="pojo.picture != null">AND picture = #{pojo.picture}</if>
+            <if test="pojo.gmtIsDel != null">AND gmt_is_del = #{pojo.gmtIsDel}</if>
+            <if test="pojo.gmtCreateTime != null">AND gmt_create_time = #{pojo.gmtCreateTime}</if>
+        </if>
+    </sql>
+    <sql id="Query_Where_ClauseForExtendWhere">
+        <where>
+            <include refid="Query_Where_Clause"/>
+            <if test="extendWhere != null">
+                <if test="extendWhere.gmtCreateTime4Start != null">AND gmt_create_time  <![CDATA[ >= ]]>
+                    #{extendWhere.gmtCreateTime4Start}
+                </if>
+                <if test="extendWhere.gmtCreateTime4End != null">AND gmt_create_time <![CDATA[ <= ]]>
+                    #{extendWhere.gmtCreateTime4End}
+                </if>
+            </if>
+        </where>
+    </sql>
+    <select id="selectList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="all_column"/>
+        FROM t_ext_advertise
+        <include refid="Query_Where_ClauseForExtendWhere"/>
+        ORDER BY id
+    </select>
+</mapper>

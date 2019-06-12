@@ -798,3 +798,21 @@ CREATE TABLE `t_sys_user_role` (
 #
 
 INSERT INTO `t_sys_user_role` VALUES (21,130,13),(57,154,14),(58,155,14),(59,156,14),(60,157,14),(62,159,14),(66,151,16),(67,161,15),(68,160,14),(69,162,14),(70,163,14),(71,164,14),(72,165,14),(73,166,14),(162,1,9),(163,1,14),(170,177,9),(171,177,12),(172,177,14);
+
+#
+# Data for table "t_ext_advertise"
+#
+
+DROP TABLE IF EXISTS `t_ext_advertise`;
+
+CREATE TABLE `t_ext_advertise` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT '',
+  `sex` int(11) DEFAULT '0' COMMENT '性别：1=男、2=女',
+  `mobile` varchar(255) DEFAULT '',
+  `weixin` varchar(255) DEFAULT '',
+  `picture` varchar(255) DEFAULT '',
+  `gmt_is_del` int(11) DEFAULT '1' COMMENT '删除：0=删除、1=有效',
+  `gmt_create_time` timestamp NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3733 DEFAULT CHARSET=utf8 COMMENT='扩展表-招聘';

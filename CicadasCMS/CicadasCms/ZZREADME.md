@@ -53,6 +53,8 @@ SiteServiceImpl.save(TCmsSiteVo pojo)
 eg:
 extend模块=》AdvertiseController(招聘模块)
 extend=>advertise.html
+eg:
+扩展表-招聘=>t_ext_advertise
 ```
 
 ### 参考地址

@@ -35,8 +35,8 @@
         <javaClientGenerator targetPackage="${masterTargetMapperPackage}" targetProject="${masterTargetJavaProject}" type="XMLMAPPER" />
 
 
-        <table tableName="t_cms_category">
-            <generatedKey column="category_id" sqlStatement="Mysql"  />
+        <table tableName="t_ext_advertise">
+            <generatedKey column="id" sqlStatement="Mysql"  />
         </table>
 
     </context>
