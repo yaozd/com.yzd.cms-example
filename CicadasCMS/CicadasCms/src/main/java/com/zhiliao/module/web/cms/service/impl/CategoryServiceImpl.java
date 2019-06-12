@@ -9,6 +9,7 @@ import com.zhiliao.common.utils.JsonUtil;
 import com.zhiliao.common.utils.PinyinUtil;
 import com.zhiliao.common.utils.StrUtil;
 import com.zhiliao.module.web.cms.service.CategoryService;
+import com.zhiliao.mybatis.enumExt.TCmsContentEnum;
 import com.zhiliao.mybatis.mapper.TCmsCategoryMapper;
 import com.zhiliao.mybatis.mapper.TCmsContentMapper;
 import com.zhiliao.mybatis.model.TCmsCategory;
@@ -124,10 +125,20 @@ public class CategoryServiceImpl implements CategoryService{
                     }
                     categoryMapper.deleteByPrimaryKey(id);
                 }else{
-                    TCmsContent content =new TCmsContent();
-                    content.setCategoryId(id);
-                    if(contentMapper.selectCount(content)>0)
+                    //已发布文章数量
+                    TCmsContent content4success =new TCmsContent();
+                    content4success.setCategoryId(id);
+                    content4success.setStatus(TCmsContentEnum.status.success.code);
+                    Integer count4success= contentMapper.selectCount(content4success);
+                    //草稿文章数量
+                    TCmsContent content4hold =new TCmsContent();
+                    content4hold.setCategoryId(id);
+                    content4hold.setStatus(TCmsContentEnum.status.hold.code);
+                    Integer count4hold= contentMapper.selectCount(content4hold);
+                    Integer count=count4success+count4hold;
+                    if(count>0){
                         throw new CmsException("当前栏目["+id+"]下有多条内容，不允许删除");
+                    }
                     categoryMapper.deleteByPrimaryKey(id);
                 }
             }
