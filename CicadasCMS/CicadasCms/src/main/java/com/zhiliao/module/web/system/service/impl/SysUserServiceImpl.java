@@ -79,6 +79,7 @@ public class SysUserServiceImpl implements SysUserService{
             /*userVo和TSysUser没什么区别，只是增加了siteId*/
             UserVo userVo = new UserVo();
             BeanUtils.copyProperties(userVo,user);
+            //超级管理员，默认使用站点为ID=1,的系统默认站点
             if(userVo.getUserId()==1){
                 userVo.setSiteId(1);
                 userVo.setSiteName(siteName);
@@ -86,7 +87,9 @@ public class SysUserServiceImpl implements SysUserService{
                 session.setAttribute(CmsConst.SITE_USER_SESSION_KEY,userVo);
                 result.put("success", true);
                 result.put("message", "登录成功！");
-            }else {
+            }
+            //普通人员拥有站点情况
+            else {
                 List<TCmsSite> sites = siteMapper.selectSitesByUserId(userVo.getUserId());
                 if (!CmsUtil.isNullOrEmpty(sites)) {
                 /*取出列表中第一个站点的Id,当作此登陆站点的标识*/

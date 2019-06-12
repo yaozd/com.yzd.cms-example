@@ -310,7 +310,16 @@ function MainMenuClick(event, treeId, treeNode) {
                             </ul>
                         </div>
                     </li>
+                    <li><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-user-secret "></i> 自定义扩展管理</a>
+                        <div class="items hide" data-noinit="true">
+                            <ul id="bjui-hnav-tree4" class="ztree ztree_main" data-toggle="ztree" data-on-click="MainMenuClick" data-expand-all="true" data-faicon="table">
 
+                                <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">自定义扩展模块</li>
+                                <!--<li data-id="20" data-pid="2" data-url="${ctxPath}/system/user/clientUser" data-tabid="client"  data-faicon="user">前台用户</li>-->
+                                <li data-id="21" data-pid="2" data-url="${ctxPath}/system/user" data-tabid="sysUser" data-faicon="user-secret">自定义菜单</li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <button type="button" class="btn-default bjui-hnav-more-right" title="导航菜单右移"><i class="fa fa-angle-double-right"></i></button>

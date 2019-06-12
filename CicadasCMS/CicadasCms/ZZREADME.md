@@ -34,7 +34,34 @@ eg:
 http://localhost:2380/api/content/184
 4.通过VUE把数据显示出来即可。
 ```
+### -用户与站点管理
+```
+站点管理=》编辑=》管理员
+PS:通过管理员可以控制站点使用权限
+-----------------
+- 涉及数据表：
+t_cms_user_site
+t_cms_site
+t_sys_user
+-----------------
+SiteServiceImpl.save(TCmsSiteVo pojo)
+
+```
 
 ### 参考地址
 - [https://gitee.com/westboy/CicadasCMS](https://gitee.com/westboy/CicadasCMS)
 - [CicadasCMS](https://gitee.com/westboy/CicadasCMS)-推荐参考-byArvin
+
+##### 1、相关技术
+- springboot
+- mybatis
+- TkMyBatis
+    - [tk.mybatis 的入门分享](https://blog.csdn.net/qq_37751454/article/details/81562911)
+    - [TkMyBatis大杂烩](https://blog.csdn.net/baijifeilong/article/details/80832908)
+- [beetl](http://www.ibeetl.com "beetl")
+- shiro
+- [mybatis通用mapper](http://git.oschina.net/free/Mapper "通用mapper")（整合maven方式代码生成）
+- [七牛云存储](https://portal.qiniu.com/signup?code=3lb7ah8vdj0ia "七牛云存储")
+- [B-JUI](http://b-jui.cn)
+- [B-JUI v1.2](http://b-jui.cn/1.2/)
+    - 备份下载：个人项目-开源>com.yzd.cms-example>B-JUI.1.2>B-JUI.1.2.ZIP
