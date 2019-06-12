@@ -47,6 +47,13 @@ t_sys_user
 SiteServiceImpl.save(TCmsSiteVo pojo)
 
 ```
+### -自定义扩展管理（extend模块）
+- 通过extend扩展模块，来满足用户的个性化需求。
+```
+eg:
+extend模块=》AdvertiseController(招聘模块)
+extend=>advertise.html
+```
 
 ### 参考地址
 - [https://gitee.com/westboy/CicadasCMS](https://gitee.com/westboy/CicadasCMS)

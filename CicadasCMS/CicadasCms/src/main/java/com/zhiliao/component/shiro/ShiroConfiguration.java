@@ -161,6 +161,8 @@ public class ShiroConfiguration {
 		chains.put(loginPath+"/login", "anon");
 		chains.put(loginPath+"/doLogin", "anon");
 		chains.put("/system/**", "kick,auth,perms[\"system\"]");
+		//用户自定义扩展模块-通过extend扩展模块，来满足用户的个性化需求
+		chains.put("/extend/**","kick,auth");
 		bean.setFilterChainDefinitionMap(chains);
 		return bean;
 	}
