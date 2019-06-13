@@ -89,3 +89,18 @@ TopicApiController
 - [B-JUI](http://b-jui.cn)
 - [B-JUI v1.2](http://b-jui.cn/1.2/)
     - 备份下载：个人项目-开源>com.yzd.cms-example>B-JUI.1.2>B-JUI.1.2.ZIP
+
+##### 3.相关问题参考：
+- [springboot 配置shiro中session时间 两种方法](https://blog.csdn.net/qq645721647/article/details/85000497)
+    ```
+    解决方法：
+    1.
+    #设置登录信息的过期时间，默认为：60s;作用：解决会话过期问题
+    server.session.timeout=7200
+    ------------
+    2.
+    在shiroConfig中配置 
+    // 设置时间600s
+    sessionManager.setGlobalSessionTimeout(600000L);
+    ------------
+    ```
