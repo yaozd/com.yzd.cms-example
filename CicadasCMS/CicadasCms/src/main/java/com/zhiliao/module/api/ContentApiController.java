@@ -66,7 +66,7 @@ public class ContentApiController {
     }
 
     @ApiOperation("内容详情接口")
-    @GetMapping(value = "/{contentId}")
+    @GetMapping(value = "/{contentId}.json")
     public String content(@PathVariable Long contentId){
         TCmsContent content = contentService.findById(contentId);
         if(CmsUtil.isNullOrEmpty(content)) throw new ApiException("["+contentId+"]"+CmsConst.CONTENT_NOT_FOUND);

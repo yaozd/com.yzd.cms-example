@@ -56,6 +56,21 @@ extend=>advertise.html
 eg:
 扩展表-招聘=>t_ext_advertise
 ```
+### -专题接口-TopicApiController
+```
+TopicApiController
+通过专题可以自定义组合栏目，提供更高的灵活性。
+```
+### API接口-基本参考说明
+| 参数        | 说明   |  
+| --------   | -----|
+|siteId    |站点ID  |
+|topicId      |专题ID  |
+|isRecommend      |是否为推荐  |
+|isHot      |根据访问量排序  |
+|isPic      |是否有封面图片  |
+|pageSize      |页面排序  |
+
 
 ### 参考地址
 - [https://gitee.com/westboy/CicadasCMS](https://gitee.com/westboy/CicadasCMS)
