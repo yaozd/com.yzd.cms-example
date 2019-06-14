@@ -7,6 +7,20 @@
 </head>
 <body>
     <h1>新闻模板==详情</h1>
+<div id="tpl4content">
+    <ul>
+        <li><span>contentId:</span>{{content.contentId}}</li>
+        <li><span>title:</span>{{content.title}}</li>
+        <li><span>description:</span>{{content.description}}</li>
+        <li><span>keywords:</span>{{content.keywords}}</li>
+        <li><span>thumb(封面图片):</span><img :src="thumbImg(content.thumb)"/></li>
+        <li><span>inputdate(创建时间):</span>{{content.inputdate}}</li>
+        <li><span>inputdate(创建时间):</span>{{formatDate(content.inputdate)}}</li>
+        <li><span>content:</span></li>
+        <li><div v-html="content.content"></div></li>
+    </ul>
+
+</div>
 </body>
 <script src="/script/new/detail.js"></script>
 </html>
