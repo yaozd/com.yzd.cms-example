@@ -7,6 +7,18 @@
 </head>
 <body>
     <h1>新闻模板==首页</h1>
+    <div>
+        <input type="hidden" id="pageNumber" value="1">
+        <input type="hidden" id="pageSize" value="10">
+    </div>
+    <div id="tpl4content">
+        <ul v-for="item in dataList">
+            <li><span>contentId:</span>{{item.contentId}}<span>title:</span>{{item.title}}</li>
+        </ul>
+    </div>
+    <div id="tpl4page">
+
+    </div>
 </body>
 <script src="/script/new/index.js"></script>
 </html>

@@ -8,7 +8,7 @@ var RequestUtil = {
             alert("id为空");
             return;
         }
-        var url = common.getContentApiUrl(id);
+        var url = common.getContentDetailApiUrl(id);
         axios.get(url)
             .then(function (response) {
                 //console.log(response.data);

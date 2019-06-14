@@ -5,8 +5,12 @@
     //页面公共对象
     var common = {
         apiOrigin: "http://localhost:2380",
-        getContentApiUrl:function(id){
+        getContentDetailApiUrl:function(id){
             var url=common.apiOrigin+"/api/content/"+id+".json";
+            return url;
+        },
+        getContentListApiUrl:function(categoryId,pageNumber,pageSize){
+            var url=common.apiOrigin+"/api/content/list?siteId=1&categoryId="+categoryId+"&orderBy=1&pageNumber="+pageNumber+"&pageNumber="+pageSize;
             return url;
         },
         //获取url参数
@@ -76,6 +80,11 @@ var StatusCodeEnum = {
 Vue.prototype.formatDate =function (inputTime) {
      return common.formatDateTime(inputTime);
 };
+/**
+ * 缩略图
+ * @param inputImg
+ * @returns {string}
+ */
 Vue.prototype.thumbImg =function (inputImg) {
     return common.isEmpty(inputImg)?"/":inputImg;
 };
