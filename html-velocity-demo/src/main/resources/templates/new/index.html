@@ -9,7 +9,8 @@
     <h1>新闻模板==首页</h1>
     <div>
         <input type="hidden" id="pageNumber" value="1">
-        <input type="hidden" id="pageSize" value="10">
+        <!--把pageSize变小，用于验证分页是否有效-->
+        <input type="hidden" id="pageSize" value="2">
     </div>
     <div id="tpl4content">
         <ul v-for="item in dataList">

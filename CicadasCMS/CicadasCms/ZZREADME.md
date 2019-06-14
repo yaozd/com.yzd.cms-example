@@ -28,7 +28,9 @@ PS:错误的表名t_cms_content_t_cms_ceshimoban
 1.系统管理=》接口列表
 2.根据栏目ID获得内容列表：content-api-controller=》/api/content/list
 eg:
+http://localhost:2380/api/content/list?siteId=1&categoryId=181&orderBy=1&pageNumber=1&pageSize=2
 http://localhost:2380/api/content/list?siteId=1&categoryId=181&orderBy=1&pageNumber=1&pageSize=10
+-------------------
 3.根据内容ID获得内容详情：content-api-controller=》/api/content/{contentId}
 eg:
 http://localhost:2380/api/content/184
@@ -104,3 +106,6 @@ TopicApiController
     sessionManager.setGlobalSessionTimeout(600000L);
     ------------
     ```
+ - pagehelper分页说明(最大页情况)
+    -   如果当前页号大于最大页号，则直接取最后一页数据。(pageNum>pageMaxNum?pageMaxNum:pageNum)
+    

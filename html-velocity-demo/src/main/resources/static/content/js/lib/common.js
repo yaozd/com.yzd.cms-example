@@ -10,7 +10,7 @@
             return url;
         },
         getContentListApiUrl:function(categoryId,pageNumber,pageSize){
-            var url=common.apiOrigin+"/api/content/list?siteId=1&categoryId="+categoryId+"&orderBy=1&pageNumber="+pageNumber+"&pageNumber="+pageSize;
+            var url=common.apiOrigin+"/api/content/list?siteId=1&categoryId="+categoryId+"&orderBy=1&pageNumber="+pageNumber+"&pageSize="+pageSize;
             return url;
         },
         //获取url参数

@@ -18,6 +18,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -62,7 +63,10 @@ public class ContentApiController {
         if(CmsUtil.isNullOrEmpty(category))
             throw new ApiException("["+categoryId+"]"+CmsConst.CATEGORY_NOT_FOUND);
         PageInfo page = this.contentService.findContentListBySiteIdAndCategoryId(siteId,categoryId,orderBy,pageNumber,pageSize,hasChild,isHot,isPic,isRecommend);
-        return JsonUtil.toSuccessResultJSON("请求成功",page.getList());
+        Map<String,Object> map=new HashMap<>(4);
+        map.put("total",page.getPages());//总页数
+        map.put("dataList",page.getList());//数据集
+        return JsonUtil.toSuccessResultJSON("请求成功",map);
     }
 
     @ApiOperation("内容详情接口")

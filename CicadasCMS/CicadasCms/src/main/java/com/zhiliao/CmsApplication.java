@@ -10,7 +10,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableCaching
 public class CmsApplication {
-
+	/**
+	 * http://localhost:2380/admin/login
+	 * @param args
+	 */
 	public static void main(String[] args){
 		SpringApplication.run(CmsApplication.class, args);
 	}

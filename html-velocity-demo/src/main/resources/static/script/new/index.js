@@ -16,14 +16,14 @@ var ViewUtil={
               if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
                   console.log(obj.curr);
                   $("#pageNumber").val(obj.curr);
-                  RequestUtil.initDataFun();
+                  RequestUtil.initDataFun(false);
               }
           }
       });
   }
 };
 var RequestUtil = {
-    initDataFun: function () {
+    initDataFun: function (isFristLoading) {
         var categoryId = common.getUrlParam("categoryId");
         var pageNumber = $("#pageNumber").val();
         var pageSize = $("#pageSize").val();
@@ -39,11 +39,12 @@ var RequestUtil = {
                 alert("请求失败");
                 return;
             }
-            vm4content.dataList = result.data;
+            vm4content.dataList = result.data.dataList;
+            //是否为首次加载
+            if(isFristLoading){
+                ViewUtil.toLaypage(result.data.total);
+            }
         });
-    },
-    initPageFun:function () {
-        ViewUtil.toLaypage(100);
     }
 };
 //VUE 放在代码的最后面
@@ -51,7 +52,6 @@ var vm4content = new Vue({
     el: "#tpl4content",
     data: {dataList: []},
     created: function () {
-        RequestUtil.initDataFun();
-        RequestUtil.initPageFun();
+        RequestUtil.initDataFun(true);
     }
 });
