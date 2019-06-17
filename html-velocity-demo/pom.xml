@@ -11,6 +11,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -46,6 +47,49 @@
                     <fork>true</fork>
                 </configuration>
             </plugin>
+            <!--maven-replacer-plugin 静态资源版本号解决方案（css/js等）-->
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>maven-replacer-plugin</artifactId>
+                <version>1.4.1</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <basedir>${project.build.directory}</basedir>
+                    <includes>
+                        <include>**/classes/templates/**/*.html</include>
+                    </includes>
+                    <replacements>
+                        <!--“"\>”主要是为了正则匹配时，减少误操作-->
+                        <replacement>
+                            <token>\.css\"\></token>
+                            <value>.css?v=${maven.build.timestamp}\"\></value>
+                        </replacement>
+                        <replacement>
+                            <token>\.css\'\></token>
+                            <value>.css?v=${maven.build.timestamp}\'\></value>
+                        </replacement>
+                        <replacement>
+                            <token>\.js\"\></token>
+                            <value>.js?v=${maven.build.timestamp}\"\></value>
+                        </replacement>
+                        <replacement>
+                            <token>\.js\'\></token>
+                            <value>.js?v=${maven.build.timestamp}\'\></value>
+                        </replacement>
+                    </replacements>
+                    <!--解决mvn 打包 maven-replacer-plugin 插件中文乱码问题-->
+                    <encoding>utf-8</encoding>
+                </configuration>
+
+            </plugin>
+            <!--静态资源版本号解决方案-End-->
         </plugins>
     </build>
 </project>
