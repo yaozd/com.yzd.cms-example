@@ -37,6 +37,39 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <!--Maven根据不同的环境进行打包begin-->
+    <!--各环境区别配置-->
+    <profiles>
+        <profile>
+            <!-- 本地开发环境 -->
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+                <!--API接口地址来源-->
+                <apiOrigin>localhost:2380</apiOrigin>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <!-- 测试环境 -->
+            <id>test</id>
+            <properties>
+                <profiles.active>test</profiles.active>
+                <apiOrigin>test-url</apiOrigin>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 生产环境 -->
+            <id>product</id>
+            <properties>
+                <profiles.active>product</profiles.active>
+                <apiOrigin>product-url</apiOrigin>
+            </properties>
+        </profile>
+    </profiles>
+    <!--Maven根据不同的环境进行打包end-->
     <build>
         <plugins>
             <plugin>
@@ -64,6 +97,7 @@
                     <basedir>${project.build.directory}</basedir>
                     <includes>
                         <include>**/classes/templates/**/*.html</include>
+                        <include>**/classes/static/content/js/lib/common.js</include>
                     </includes>
                     <replacements>
                         <!--“"\>”主要是为了正则匹配时，减少误操作-->
@@ -82,6 +116,11 @@
                         <replacement>
                             <token>\.js\'\></token>
                             <value>.js?v=${maven.build.timestamp}\'\></value>
+                        </replacement>
+                        <!--配置不同环境的接口地址-->
+                        <replacement>
+                            <token>localhost:2380</token>
+                            <value>${apiOrigin}</value>
                         </replacement>
                     </replacements>
                     <!--解决mvn 打包 maven-replacer-plugin 插件中文乱码问题-->
