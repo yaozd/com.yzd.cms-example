@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js在html中的加载执行顺序-最先加载当前用户权限</title>
+    <script src="/content/js/lib/jquery.js"></script>
+    <script src=/content/js/lib/common.js></script>
+    <!--最先执行脚本的是/script/perms-->
+    <!--PS:</script>起到一个缓冲的作用，必须带上-->
+    <script type="text/javascript" src="/content/script/perms/load.js"></script>
+    <script>
+        alert(permission.data);
+        alert("1-最先执行");
+    </script>
+</head>
+<body onload="alert('4-最后执行');">
+<h1>Js在html中的加载执行顺序-使用ajax获得权限，然后再控制导航显示</h1>
+<div id="nav">
+    <p style="display: none" perm-code="user:admin">用户模块user:admin</p>
+    <p style="display: none" perm-code="user:input">系统模块user:input</p>
+    <p style="display: none" perm-code="user:update">功能模块user:update</p>
+    <p style="display: none">没用perm-code属性模块</p>
+</div>
+</body>
+<script>
+    alert("2-接着执行");
+</script>
+<script>
+    $(document).ready(function () {
+        alert("3-权限标识[perm-code]");
+        $('#nav p').each(function (i) {
+            var code=$(this).attr('perm-code');
+           console.log(code);
+           //权限标识不能为空，并且包含此权限在permission.data中
+           if(common.isNotEmpty(code)&&permission.data.indexOf(code)>-1){
+               $(this).show();
+           }
+        });
+    });
+</script>
+</html>

@@ -30,6 +30,16 @@
             var d = new Date(str);
             format = format || 'yyyy-MM-dd';
             return d.toFormatString(format);
+        },
+        isNotEmpty:  function(val){
+            return !this.isEmpty(val);
+        },
+        isEmpty: function(val){
+            if ((val==null || typeof(val)=="undefined")|| (typeof(val)=="string"&&val==""&&val!="undefined")){
+                return true;
+            }else{
+                return false;
+            }
         }
     };
 
