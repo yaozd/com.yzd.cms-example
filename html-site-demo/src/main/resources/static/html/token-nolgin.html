@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非登录情况下的TOKEN设置问题</title>
+    <script src="/content/js/lib/jquery.js"></script>
+    <script src=/content/js/lib/common.js></script>
+    <!--最先执行脚本的是/script/perms-->
+    <!--PS:</script>起到一个缓冲的作用，必须带上-->
+    <script type="text/javascript" src="/content/script/token/nolgin.js"></script>
+</head>
+<body>
+<h1>非登录情况下的TOKEN设置问题</h1>
+<div>
+    <h3>1.如果当前TOKEN为非登录类型，过期则清除当前token,重新加载当前页面(window.reload),获得新的TOKEN</h3>
+    <h3>2.如果当前TOKEN为登录类型，过期则清除当前token,跳转到用户登录页面,获得新的TOKEN</h3>
+</div>
+</body>
+</html>
