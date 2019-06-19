@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>权限导航测试</title>
+    <script src="/content/js/lib/jquery.js"></script>
+</head>
+<body>
+<input type="hidden" name="nav-mokuai" value="neirongmokuai">
+<input type="hidden" name="nav-mokuai" value="yonghumokuai">
+<input type="hidden" name="nav-mokuai" value="xitongmokuai">
+<input type="hidden" name="nav-mokuai" value="gongnengmokuai">
+<p id="yonghumokuai" style="display: none">用户模块</p>
+<p id="xitongmokuai" style="display: none">系统模块</p>
+<p id="gongnengmokuai" style="display: none">功能模块</p>
+</body>
+<script>
+    /**
+     * 此处可以使用AJAX获取到用户的所有权限，目前是测试所以使用隐藏控件hidden代替。
+     */
+    $(document).ready(function () {
+        showNavigationMokuai();
+    });
+    function showNavigationMokuai() {
+        var navMokuai = [];//定义一个空数组
+        $("input[name='nav-mokuai']").each(function (i) {
+            //把所有值存入数组
+            navMokuai[i] = $(this).val();
+            var id="#"+$(this).val();
+            $(id).show();
+        });
+        console.log(navMokuai);
+    }
+</script>
+</html>

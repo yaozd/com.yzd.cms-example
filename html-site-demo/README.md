@@ -10,6 +10,23 @@
 - [vue-page-2.html](http://localhost:1222/html/vue-page-2.html)
 - [vue-css.html](http://localhost:1222/html/vue-css.html)
 
+###　通过js做权限控制
+- [navigation.html](http://localhost:1222/html/navigation.html)-权限导航测试
+- [script-execute-sequence.html](http://localhost:1222/html/script-execute-sequence.html)-JS脚本执行顺序
+- [script-execute-sequence-2.html](http://localhost:1222/html/script-execute-sequence-2.html)-JS脚本执行顺序
+- [script-execute-sequence-3.html](http://localhost:1222/html/script-execute-sequence-3.html)-Js在html中的加载执行顺序-最先加载当前用户权限
+- [script-execute-sequence-4.html](http://localhost:1222/html/script-execute-sequence-4.html)-Js在html中的加载执行顺序-用户没有登录的情况下，自动跳转到登录页面
+- PS:特别注意
+    ```
+    正确引用方式：
+        <script type="text/javascript" src="/script/perms-load"></script>
+        <script type="text/javascript" src="/script/perms"></script>
+    错误引用方式：
+        <script type="text/javascript" src="/script/perms-load"/>
+        <script type="text/javascript" src="/script/perms"/>
+    ```
+ ### 通过js做权限控制-参考：
+ - [js在html中的加载执行顺序](https://www.cnblogs.com/lindaWei/archive/2012/04/05/2433454.html)
 
 ### 工具
 - [JSON在线编辑器-BeJSON.com](http://www.bejson.com/jsoneditoronline/)

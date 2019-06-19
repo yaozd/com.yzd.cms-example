@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js在html中的加载执行顺序-最先加载当前用户权限</title>
+    <!--最先执行脚本的是/script/perms-->
+    <script type="text/javascript" src="/script/perms-load-tpl"></script>
+    <script>
+        alert(permission.data);
+        alert("1-最先执行");
+    </script>
+</head>
+<body onload="alert('3-最后执行');">
+<h1>Js在html中的加载执行顺序-最先加载当前用户权限</h1>
+</body>
+<script>
+    alert("2-接着执行");
+</script>
+</html>

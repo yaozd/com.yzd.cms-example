@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js在html中的加载执行顺序</title>
+    <script>
+        alert("1-最先执行");
+    </script>
+</head>
+<body onload="alert('3-最后执行');">
+</body>
+<script>
+    alert("2-接着执行");
+</script>
+</html>
