@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -21,6 +23,20 @@ public class ScriptController {
     @ResponseBody
     public String perms() {
         return "alert('最先执行脚本的是/script/perms')";
+    }
+
+    @GetMapping("perms-ajax")
+    @ResponseBody
+    public String permsAjax(HttpServletRequest request, HttpServletResponse response) {
+        String token=request.getHeader("token");
+        log.info(token);
+        //当前用户权限
+        List<String> permsList=new ArrayList<>();
+        permsList.add("user:admin");
+        permsList.add("user:add");
+        permsList.add("user:update");
+        String permsJson=FastJsonUtil.serialize(permsList);
+        return permsJson;
     }
 
     /**
