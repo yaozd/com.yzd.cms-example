@@ -10,6 +10,10 @@
 - [vue-page-2.html](http://localhost:1222/html/vue-page-2.html)
 - [vue-css.html](http://localhost:1222/html/vue-css.html)
 
+###　webflux-websocket
+- [webflux-websocket-cors.html](http://localhost:1222/html/webflux-websocket-cors.html)－跨域访问测试，默认情况下，就可以实现跨域访问
+- [webflux-websocket-token.html](http://localhost:1222/html/webflux-websocket-token.html)-通过请求地址中带参数，来传递token
+
 ###　通过js做权限控制
 - [navigation.html](http://localhost:1222/html/navigation.html)-权限导航测试
 - [script-execute-sequence.html](http://localhost:1222/html/script-execute-sequence.html)-JS脚本执行顺序
